@@ -16,7 +16,6 @@ License:	GPL
 Group:		Office
 URL:		http://sourceforge.net/projects/aiksaurus/
 Source:		%{name}-%{version}.tar.bz2
-BuildRoot:	%{_tmppath}/%{name}-buildroot
 BuildRequires:	gtk2-devel
 BuildRequires:	autoconf2.5 automake1.7
 BuildRequires:	gnome-common
