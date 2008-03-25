@@ -1,6 +1,6 @@
 %define name	aiksaurus
 %define version	1.2.1
-%define release	%mkrel 3
+%define release	%mkrel 4
 
 %define api_version	1.2
 %define lib_major	0
@@ -47,7 +47,7 @@ This package contains the datafiles.
 
 %package -n %lib_name
 Summary:	An English-language thesaurus library
-Group:          Office
+Group:          System/Libraries
 Requires:	%{name}-data
 Provides:	libAiksaurus0
 Obsoletes:	libAiksaurus0
@@ -88,7 +88,7 @@ This package provides the standalone GTK+ interface.
 
 %package -n %{lib_namegtk}
 Summary:        Libraries for aiksaurusgtk
-Group:          Office
+Group:          System/Libraries
 Provides:	AiksaurusGTK
 Obsoletes:	AiksaurusGTK
 
@@ -114,8 +114,6 @@ applications with Aiksaurusgtk.
 %prep
 %setup -q -n %{name}-%{version}
 
-# run with cvs release
-#./autogen.sh
 
 %build
 
