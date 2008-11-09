@@ -4,21 +4,24 @@
 
 %define api_version	1.2
 %define lib_major	0
-%define lib_name	%mklibname %{name}- %{api_version} %{lib_major}
-%define lib_namegtk	%mklibname %{name}gtk- %{api_version} %{lib_major}
+%define lib_name	%mklibname %{name} %{api_version} %{lib_major}
+%define develname	%mklibname -d %name
+%define lib_namegtk	%mklibname %{name}gtk %{api_version} %{lib_major}
+%define gtkdevelname 	%mklibname -d %{name}gtk
 
 
 Summary:	An English-language thesaurus library
 Name:		%{name}
 Version:	%{version}
 Release:	%{release}
-License:	GPL
+License:	GPLv2+
 Group:		Office
 URL:		http://sourceforge.net/projects/aiksaurus/
 Source:		%{name}-%{version}.tar.bz2
+Patch0:		aiksaurus-1.2.1-gcc43.patch
 BuildRoot:	%{_tmppath}/%{name}-buildroot
 BuildRequires:	gtk2-devel
-BuildRequires:	autoconf2.5 automake1.7
+BuildRequires:	autoconf automake
 BuildRequires:	gnome-common
 Requires:	%{name}-data
 Provides:	Aiksaurus
@@ -51,6 +54,7 @@ Group:          System/Libraries
 Requires:	%{name}-data
 Provides:	libAiksaurus0
 Obsoletes:	libAiksaurus0
+Obsoletes:	%mklibname %{name}- 1.2 0
 
 %description -n %lib_name
 Aiksaurus is an English-language thesaurus library that can be
@@ -61,14 +65,15 @@ This package contains these libraries.
 Install Aiksaurus if you want to have a thesaurus available on
 your computer.
 
-%package -n %lib_name-devel
+%package -n %develname
 Summary:	Libraries and include files for Aiksuarus
 Group:		Development/C
 Requires:	%{lib_name} = %{version}-%{release}
 Provides:	aiksaurus-devel = %{version}-%{release}
 Provides:	aiksaurus-%{api_version}-devel = %{version}-%{release}
+Obsoletes:	%{mklibname %{name}- 1.2 0}-devel
 
-%description -n %lib_name-devel
+%description -n %develname
 Aiksaurus is an English-language thesaurus library that can be
 embedded in word processors, email composers, and other authoring
 software to provide thesaurus capabilities.
@@ -91,6 +96,7 @@ Summary:        Libraries for aiksaurusgtk
 Group:          System/Libraries
 Provides:	AiksaurusGTK
 Obsoletes:	AiksaurusGTK
+Obsoletes:	%mklibname %{name}gtk- 1.2 0
 
 %description -n %{lib_namegtk}
 Aiksaurusgtk is a GTK+ interface to the Aiksaurus library.
@@ -99,31 +105,30 @@ in GTK+ projects, notably AbiWord.
 This package provides the library files for aiksaurusgtk.
 
 
-%package -n %{lib_namegtk}-devel
+%package -n %gtkdevelname
 Summary:        A GTK+ thesaurus library
 Group:          Development/C
 Requires:       %{lib_namegtk} = %{version}-%{release}
 Provides:       aiksaurusgtk-devel = %{version}-%{release}
 Provides:       aiksaurusgtk-%{api_version}-devel = %{version}-%{release}
+Obsoletes:	%{mklibname %{name}gtk- 1.2 0}-devel
 
-%description -n %{lib_namegtk}-devel
+%description -n %{gtkdevelname}
 This package contains the libraries and includes files necessary to develop
 applications with Aiksaurusgtk.
 
 
 %prep
 %setup -q -n %{name}-%{version}
-
+%patch0 -p1
 
 %build
-
 %configure2_5x
-make
+%make
 
 %install
 rm -rf $RPM_BUILD_ROOT
-mkdir -p $RPM_BUILD_ROOT
-make install DESTDIR=$RPM_BUILD_ROOT
+%makeinstall_std
 
 %if %mdkversion < 200900
 %post -n %lib_name -p /sbin/ldconfig
@@ -157,7 +162,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(-, root, root)
 %{_libdir}/libAiksaurus-*.so.*
 
-%files -n %lib_name-devel
+%files -n %develname
 %defattr(-, root, root)
 %{_libdir}/libAiksaurus.so
 %{_libdir}/libAiksaurus.*a
@@ -175,7 +180,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(-, root, root)
 %{_libdir}/libAiksaurusGTK-*.so.*
 
-%files -n %{lib_namegtk}-devel
+%files -n %gtkdevelname
 %defattr(-, root, root)
 %{_libdir}/libAiksaurusGTK.*a
 %{_libdir}/libAiksaurusGTK.so
