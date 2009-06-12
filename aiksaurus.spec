@@ -1,6 +1,6 @@
 %define name	aiksaurus
 %define version	1.2.1
-%define release	%mkrel 6
+%define release	%mkrel 7
 
 %define api_version	1.2
 %define lib_major	0
@@ -19,6 +19,7 @@ Group:		Office
 URL:		http://sourceforge.net/projects/aiksaurus/
 Source:		%{name}-%{version}.tar.bz2
 Patch0:		aiksaurus-1.2.1-gcc43.patch
+Patch1:		%{name}-1.2.1-fix-str-fmt.patch
 BuildRoot:	%{_tmppath}/%{name}-buildroot
 BuildRequires:	gtk2-devel
 BuildRequires:	autoconf automake
@@ -121,6 +122,7 @@ applications with Aiksaurusgtk.
 %prep
 %setup -q -n %{name}-%{version}
 %patch0 -p1
+%patch1 -p1 -b .strfmt
 
 %build
 %configure2_5x
