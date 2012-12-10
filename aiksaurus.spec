@@ -141,3 +141,81 @@ applications with Aiksaurusgtk.
 %{_libdir}/pkgconfig/gaiksaurus-1.0.pc
 %{_includedir}/Aiksaurus/AiksaurusGTK*.h
 
+
+
+%changelog
+* Sun Mar 25 2012 Matthew Dawkins <mattydaw@mandriva.org> 1.2.1-8
++ Revision: 786650
+- rebuild
+- cleaned up spec
+- disabled static build
+
+* Fri Jun 12 2009 Jérôme Brenier <incubusss@mandriva.org> 1.2.1-7mdv2011.0
++ Revision: 385614
+- fix str fmt
+
+* Sun Nov 09 2008 Funda Wang <fwang@mandriva.org> 1.2.1-6mdv2009.1
++ Revision: 301225
+- add gcc 4.3 patch
+- new devel package name policy
+- new license policy
+
+  + Thierry Vignaud <tv@mandriva.org>
+    - rebuild
+
+  + Pixel <pixel@mandriva.com>
+    - do not call ldconfig in %%post/%%postun, it is now handled by filetriggers
+
+* Tue Mar 25 2008 Emmanuel Andry <eandry@mandriva.org> 1.2.1-4mdv2008.1
++ Revision: 189871
+- Fix lib group
+
+* Thu Dec 20 2007 Olivier Blin <blino@mandriva.org> 1.2.1-3mdv2008.1
++ Revision: 135819
+- restore BuildRoot
+
+  + Thierry Vignaud <tv@mandriva.org>
+    - kill re-definition of %%buildroot on Pixel's request
+    - import aiksaurus
+
+
+* Wed Jun 28 2006 Lenny Cartier <lenny@mandriva.com> 1.2.1-3mdv2007.0
+- rebuild
+
+* Fri Sep 02 2005 Marcel Pol <mpol@mandriva.org> 1.2.1-2mdk
+- rebuild
+
+* Mon Aug 09 2004 Marcel Pol <mpol@mandrake.org> 1.2.1-1mdk
+- 1.2.1
+- increase api version
+- no need to run aclocal anymore
+
+* Wed Jun 09 2004 Marcel Pol <mpol@mandrake.org> 1.0.2-0.cvs20040609.1mdk
+- cvs snapshot
+
+* Wed Dec 16 2003 Marcel Pol <mpol@mandrake.org> 1.0.1-5mdk
+- use better 64bit (build)requires
+
+* Sun Oct 19 2003 Marcel Pol <mpol@gmx.net> 1.0.1-4mdk
+- buildrequires
+
+* Fri Aug 29 2003 Marcel Pol <mpol@gmx.net> 1.0.1-3mdk
+- buildrequires
+
+* Mon Jul 21 2003 Laurent MONTEL <lmontel@mandrakesoft.com> 1.0.1-2mdk
+- Rebuild
+
+* Wed Jul 16 2003 Marcel Pol <mpol@gmx.net> 1.0.1-1mdk
+- rebuild for provides/requires
+- s/Aiksaurus/aiksaurus
+- new url
+- source now includes gtk frontend
+- drop patch0
+- run aclocal to avoid libtool problems
+- new soname
+
+* Thu May 22 2003 Marcel Pol <mpol@gmx.net> 0.15-2mdk
+- rebuild for provides/requires
+
+* Mon Mar 10 2003 Marcel Pol <mpol@gmx.net> 0.15-1mdk
+- initial mandrake release
