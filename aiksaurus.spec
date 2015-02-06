@@ -9,7 +9,7 @@
 Summary:	An English-language thesaurus library
 Name:		aiksaurus
 Version:	1.2.1
-Release:	8
+Release:	9
 License:	GPLv2+
 Group:		Office
 URL:		http://sourceforge.net/projects/aiksaurus/
