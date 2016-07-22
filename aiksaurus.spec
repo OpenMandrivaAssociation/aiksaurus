@@ -4,12 +4,13 @@
 %define develname	%mklibname -d %{name}
 %define libgtk		%mklibname %{name}gtk %{api} %{major}
 %define develgtk 	%mklibname -d %{name}gtk
-
+%define _disable_rebuild_configure 1
+%define _disable_lto 1
 
 Summary:	An English-language thesaurus library
 Name:		aiksaurus
 Version:	1.2.1
-Release:	9
+Release:	10
 License:	GPLv2+
 Group:		Office
 URL:		http://sourceforge.net/projects/aiksaurus/
