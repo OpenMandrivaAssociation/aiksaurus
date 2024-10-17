@@ -13,7 +13,7 @@ Version:	1.2.1
 Release:	11
 License:	GPLv2+
 Group:		Office
-URL:		http://sourceforge.net/projects/aiksaurus/
+URL:		https://sourceforge.net/projects/aiksaurus/
 Source0:	%{name}-%{version}.tar.gz
 Patch0:		aiksaurus-1.2.1-gcc43.patch
 Patch1:		%{name}-1.2.1-fix-str-fmt.patch
